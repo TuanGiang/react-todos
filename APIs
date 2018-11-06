@@ -1,0 +1,13 @@
+$BASE_URL= "https://api/appName"
+
+1. $BASE_URL/v3/config (get config)
+
+2. $BASE_URL/v2/tags (get grades)
+
+3  $BASE_URL/v3/tags/{tagID} (get subjects)
+
+4. $BASE_URL/v3/items?item_type={item_type}&item_id={item_id} (get subject detail)
+
+5: $BASE_URL/v3/articles/{id} (get lesson details) 
+
+6. Download (offline)
