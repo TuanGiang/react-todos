@@ -1,24 +1,21 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, FlatList, AsyncStorage} from 'react-native';
-import GradeItem from '../components/GradeItem';
+import SubjectItem from '../components/SubjectItem';
 
-import { bindActionCreators } from 'redux'
-import {connect} from 'react-redux';
-import { fetchGrade } from '../actions/action'
+export default class SubjectList extends Component<Props>{
 
-class GradeList extends Component<Props>{
+  _keyExtractor = (item, index) => String(item.item_id);
 
-  _keyExtractor = (item, index) => item.tagId;
-
-  _onPressItem = (id: int) => {
-    this.props.onGradePressItem(id);
+  _onPressItem = (id: int, type: int) => {
+    this.props.onSubjectPressItem(id, type);
    };
 
    _renderItem = ({item}) => (
      <View style ={styles.item}>
-       <GradeItem style ={styles.item}
-         id={item.tagId}
-         key = {item.tagId}
+       <SubjectItem style ={styles.item}
+         id={item.item_id}
+         type={item.item_type}
+         key = {item.item_id}
          title={item.title}
          picture ={item.picture}
          productId = {item.product_id}
@@ -31,28 +28,14 @@ class GradeList extends Component<Props>{
     return (
         <FlatList style = {styles.container}
           vertical
-          data={this.props.grades}
+          data={this.props.subjects}
           numColumns={3}
           keyExtractor={this._keyExtractor}
           renderItem={ this._renderItem}
           />
     );
   }
-
-  componentDidMount(){
-      this.props.fetchGrade();
-  }
 }
-
-const mapStateToProps = state => ({
-    grades: state.grade
-});
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchGrade }, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(GradeList);
 
 const styles = StyleSheet.create({
   container: {

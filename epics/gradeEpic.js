@@ -3,7 +3,7 @@ import { filter, map, delay, mergeMap } from 'rxjs/operators';
 import { of, from } from 'rxjs';
 import { AsyncStorage } from "react-native"
 
-_storeData = async (datas) => {
+storeData = async (datas) => {
   try {
     await AsyncStorage.setItem('GRADE', JSON.stringify(datas));
   } catch (error) {
@@ -16,7 +16,7 @@ const fetchData = () => {
     .then((response) => response.json())
     .then((responseJson) => {
       let datas = responseJson.list_class;
-      _storeData(datas);
+      storeData(datas);
       return datas;
     });
     return from(request);
