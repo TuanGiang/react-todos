@@ -12,9 +12,17 @@ constructor(props){
   this.state = {alwayUpdate: true};
 }
 
+_storeData = async (grade) => {
+  try {
+    await AsyncStorage.setItem('SUBJECT', String(grade));
+    this.props.navigation.navigate('SubjectDetailScreen');
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 _onSubjectPressItem = (id: int, type: int) => {
-
-
+    this._storeData(id);
  };
 
 render() {
@@ -55,7 +63,6 @@ render() {
 
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('aaaaaaaabbbbbbbb');
   return { subjects: state.subject}
 }
 
