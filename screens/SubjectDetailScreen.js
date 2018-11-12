@@ -1,10 +1,27 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, View, Text, AsyncStorage,SectionList, TouchableOpacity} from 'react-native';
+import SubjectDetailItem from '../components/SubjectDetailItem'
 import { bindActionCreators } from 'redux'
 import {connect} from 'react-redux';
 import { fetchSubjectDetail } from '../actions/action'
 
 class SubjectDetailScreen extends Component<Props> {
+
+
+  _storeData = async (detail) => {
+    try {
+      await AsyncStorage.setItem('SUBJECT-DETAIL', String(detail));
+      this.props.navigation.navigate('ArticleListScreen');
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  _onPressItem = (id: int) => {
+      this._storeData(id);
+   };
+
+
 
   renderSeparator = () => {
       return (
@@ -27,11 +44,11 @@ render() {
         <View style ={styles.container}>
             <SectionList
             renderItem={({item, index, section}) => (
-              <TouchableOpacity>
-                <View style={styles.item}>
-                  <Text key={index}>{item.title}</Text>
-                </View>
-              </TouchableOpacity>
+              <SubjectDetailItem
+              id = {item.itemId}
+              title = {item.title}
+              index ={index}
+              onItemPressed={this._onPressItem}/>
             )}
             renderSectionHeader={({section: {title}}) => (
               <View style={styles.header}>
@@ -51,7 +68,7 @@ render() {
   componentDidMount(){
     AsyncStorage.getItem('SUBJECT', (err, result) => {
         if(result!=null){
-          this.props.fetchSubjectDetail('1',result);
+          this.props.fetchSubjectDetail(result);
         }
     });
   }

@@ -1,21 +1,21 @@
-import {FETCH_SUBJECT_DETAIL, FETCH_SUBJECT_DETAIL_DONE} from '../actions/type';
+import {FETCH_ARTICLE_LIST, FETCH_ARTICLE_LIST_DONE} from '../actions/type';
 import { filter, map, delay, mergeMap } from 'rxjs/operators';
 import { of, from } from 'rxjs';
 import { AsyncStorage } from "react-native"
 
 storeData = async (itemID,datas) => {
   try {
-    await AsyncStorage.setItem('SUBJECT-DETAIL-'+ itemID, JSON.stringify(datas));
+    await AsyncStorage.setItem('ARTICLE-LIST-'+ itemID, JSON.stringify(datas));
   } catch (error) {
     // Error saving data
   }
 }
 
 const fetchData = (itemId) => {
-    const request = fetch('https://api.loigiaihay.com/v3/categories/'+itemId)
+    const request = fetch('https://api.loigiaihay.com/v3/events/'+itemId)
     .then((response) => response.json())
     .then((responseJson) => {
-      let datas = responseJson.listEvents;
+      let datas = responseJson.listArticles;
       storeData(itemId,datas);
       return datas;
     });
@@ -24,11 +24,11 @@ const fetchData = (itemId) => {
 };
 
 
-export const subjectDetailEpic = action$ => action$.pipe(
-  filter(action => action.type === FETCH_SUBJECT_DETAIL),
+export const articleListEpic = action$ => action$.pipe(
+  filter(action => action.type === FETCH_ARTICLE_LIST),
   mergeMap(action => fetchData(action.itemId)),
   map(response => ({
-        type: FETCH_SUBJECT_DETAIL_DONE,
+        type: FETCH_ARTICLE_LIST_DONE,
         payload: response})
     )
   );
