@@ -10,3 +10,6 @@ export const FETCH_SUBJECT_DETAIL_DONE = 'fetch_subject_detail_done'
 
 export const FETCH_ARTICLE_LIST = 'fetch_article_list'
 export const FETCH_ARTICLE_LIST_DONE = 'fetch_article_list_done'
+
+export const FETCH_ARTICLE = 'fetch_article'
+export const FETCH_ARTICLE_DONE = 'fetch_article_done'

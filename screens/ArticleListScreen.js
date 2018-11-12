@@ -21,10 +21,19 @@ class ArticleListScreen extends Component<Props> {
     };
 
     _keyExtractor = (item, index) => String(item.articleId);
+    _storeData = async (detail) => {
+      try {
+        await AsyncStorage.setItem('ARTICLE', String(detail));
+        this.props.navigation.navigate('ArticleDetailScreen');
+      } catch (error) {
+        console.log(error);
+      }
+    }
 
     _onPressItem = (id: int) => {
-
+        this._storeData(id);
      };
+
 
      _renderItem = ({item}) => (
        <View style ={styles.item}>
