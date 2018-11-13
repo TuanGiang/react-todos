@@ -69,7 +69,9 @@ class ArticleDetailScreen extends Component<Props> {
             title ={item.title}
             description ={item.introtext}
             content ={item.content}/>
-          <ArticleAction/>
+          <ArticleAction
+          id = {item.articleId}
+          downloadUrl = {item.zip_link}/>
           </View>
         );
       }else{

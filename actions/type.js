@@ -13,3 +13,7 @@ export const FETCH_ARTICLE_LIST_DONE = 'fetch_article_list_done'
 
 export const FETCH_ARTICLE = 'fetch_article'
 export const FETCH_ARTICLE_DONE = 'fetch_article_done'
+
+
+export const DOWNLOAD_CONTENT = 'download_content'
+export const DOWNLOAD_CONTENT_DONE = 'download_content_done'
