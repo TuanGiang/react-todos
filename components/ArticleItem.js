@@ -2,7 +2,7 @@ import React from 'react';
 import {Platform, StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 export default class ArticleItem extends React.Component{
   _onItemPressed = () =>{
-    this.props.onItemPressed(this.props.id)
+    this.props.onItemPressed(this.props.id, this.props.path)
   };
 
 

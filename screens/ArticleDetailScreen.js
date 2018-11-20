@@ -29,10 +29,10 @@ class ArticleDetailScreen extends Component<Props> {
       if(item!=null){
         return (
           <View  style={styles.header}>
-          <ArticleDetail
-            title ={item.title}
-            description ={item.introtext}
-            content ={item.content}/>
+            <ArticleDetail
+              title ={item.title}
+              description ={item.introtext}
+              content ={item.content}/>
           <ArticleAction/>
           </View>
         );
@@ -70,8 +70,11 @@ class ArticleDetailScreen extends Component<Props> {
             description ={item.introtext}
             content ={item.content}/>
           <ArticleAction
-          id = {item.articleId}
-          downloadUrl = {item.zip_link}/>
+            id = {item.articleId}
+            downloadUrl = {item.zip_link}
+            image = {item.thumbnail}
+            title = {item.title}
+            description = {item.introtext}/>
           </View>
         );
       }else{

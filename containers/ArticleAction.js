@@ -9,12 +9,11 @@ class ArticleAction extends React.Component{
 
 
   _onDownload = () => {
-    this.props.downloadContent(this.props.id, this.props.downloadUrl)
+    this.props.downloadContent(this.props.id, this.props.downloadUrl, this.props.image, this.props.title, this.props.description)
   }
 
   render(){
-    console.log('aaaaaaaaaa', JSON.stringify(this.props.downloadContents));
-    let data = this.props.downloadContents.filter(item => item.itemId == this.props.id).length;
+    let data = this.props.downloadContents.filter(item => item.id == this.props.id).length;
     if(data > 0){
       return(
         <View style ={styles.item}>

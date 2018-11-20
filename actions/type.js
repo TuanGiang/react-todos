@@ -17,3 +17,6 @@ export const FETCH_ARTICLE_DONE = 'fetch_article_done'
 
 export const DOWNLOAD_CONTENT = 'download_content'
 export const DOWNLOAD_CONTENT_DONE = 'download_content_done'
+
+export const INIT_OFFLINES = 'init_offlines'
+export const INIT_OFFLINES_DONE = 'init_offlines_done'

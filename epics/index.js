@@ -5,6 +5,7 @@ import {subjectDetailEpic} from './subjectDetailEpic';
 import {articleListEpic} from './articleListEpic';
 import {articleEpic} from './articleEpic';
 import {downloadContentEpic} from './downloadContentEpic';
+import {initOffline} from './initOfflineEpic';
 export default combineEpics(
     gradeEpic,
     subjectEpic,
@@ -12,4 +13,5 @@ export default combineEpics(
     articleListEpic,
     articleEpic,
     downloadContentEpic,
+    initOffline,
 )

@@ -30,7 +30,7 @@ class ArticleListScreen extends Component<Props> {
       }
     }
 
-    _onPressItem = (id: int) => {
+    _onPressItem = (id: int, path: string) => {
         this._storeData(id);
      };
 

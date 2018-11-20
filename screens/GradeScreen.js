@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, View, Text, AsyncStorage} from 'react-native';
 import GradeList from '../containers/GradeList'
-export default class GradeScreen extends Component<Props> {
 
+import { bindActionCreators } from 'redux'
+import {connect} from 'react-redux';
+import { initOffline } from '../actions/action'
+
+class GradeScreen extends Component<Props> {
 
   _storeData = async (grade) => {
     try {
@@ -14,7 +18,6 @@ export default class GradeScreen extends Component<Props> {
   }
 
   _onGradePressItem = (id: int) => {
-
       this._storeData(id);
    };
 
@@ -27,7 +30,17 @@ export default class GradeScreen extends Component<Props> {
       </View>
     );
   }
+
+  componentDidMount(){
+      this.props.initOffline();
+  }
 }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ initOffline }, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(GradeScreen);
 
 const styles = StyleSheet.create({
   container: {
