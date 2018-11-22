@@ -20,3 +20,9 @@ export const DOWNLOAD_CONTENT_DONE = 'download_content_done'
 
 export const INIT_OFFLINES = 'init_offlines'
 export const INIT_OFFLINES_DONE = 'init_offlines_done'
+
+export const CLEAR_SUBJECT_DETAIL = 'clear_subjet_detail'
+
+export const CLEAR_ARTICLES = 'CLEAR_ARTICLES'
+
+export const CLEAR_ARTICLE_DETAIL = 'CLEAR_ARTICLE_DETAIL'

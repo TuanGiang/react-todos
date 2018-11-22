@@ -8,17 +8,48 @@ import ArticleDetailScreen from '../screens/ArticleDetailScreen.js';
 import OfflineScreen from '../screens/OfflineScreen.js';
 import ArticleOfflineDetailScreen from '../screens/ArticleOfflineDetailScreen.js';
 
-const nav = createDrawerNavigator({
-  OfflineScreen : {screen : OfflineScreen},
-  GradeScreen: {screen: GradeScreen },
+import SideMenu from './SideMenu';
+
+const grade = createStackNavigator({
+    GradeScreen: {screen: GradeScreen },
+  },
+  {
+    initialRouteName: 'GradeScreen',
+  });
+
+const subject = createStackNavigator({
   SubjectScreen: {screen: SubjectScreen },
   SubjectDetailScreen: {screen: SubjectDetailScreen},
   ArticleListScreen: {screen:ArticleListScreen },
   ArticleDetailScreen: {screen:ArticleDetailScreen},
-  ArticleOfflineDetailScreen : {screen: ArticleOfflineDetailScreen},
   },
   {
-    initialRouteName: 'GradeScreen',
+    initialRouteName: 'SubjectScreen',
+});
+
+const offline = createStackNavigator({
+    OfflineScreen : {screen : OfflineScreen},
+    ArticleOfflineDetailScreen : {screen: ArticleOfflineDetailScreen},
+  },
+  {
+    initialRouteName: 'OfflineScreen',
+
+  });
+
+const nav = createDrawerNavigator({
+  GradeScreen: {screen: grade },
+  SubjectStackScreen: {screen: subject },
+  OfflineScreen : {screen : offline},
+  },
+  {
+    contentComponent: SideMenu,
+    drawerWidth: 300,
+    defaultNavigationOptions: {
+       headerTintColor: '#fff',
+       headerStyle: {
+         backgroundColor: '#000',
+       },
+     },
   }
 );
 

@@ -3,10 +3,16 @@ import {Platform, StyleSheet, View, Text, AsyncStorage,SectionList, TouchableOpa
 import SubjectDetailItem from '../components/SubjectDetailItem'
 import { bindActionCreators } from 'redux'
 import {connect} from 'react-redux';
-import { fetchSubjectDetail } from '../actions/action'
+import { fetchSubjectDetail, clearSubjectDetail } from '../actions/action'
 
 class SubjectDetailScreen extends Component<Props> {
 
+  constructor(props){
+    super(props);
+  }
+  static navigationOptions = {
+      title: 'Pick Lesson',
+    };
 
   _storeData = async (detail) => {
     try {
@@ -73,6 +79,10 @@ render() {
     });
   }
 
+  componentWillUnmount(){
+      this.props.clearSubjectDetail();
+  }
+
 }
 
 
@@ -81,7 +91,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchSubjectDetail }, dispatch)
+  return bindActionCreators({ fetchSubjectDetail, clearSubjectDetail }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SubjectDetailScreen);

@@ -7,10 +7,12 @@ import ArticleDetail from '../components/ArticleDetail'
 
 import { bindActionCreators } from 'redux'
 import {connect} from 'react-redux';
-import { fetchArticle } from '../actions/action'
+import { fetchArticle, clearArticleDetail } from '../actions/action'
 
 class ArticleDetailScreen extends Component<Props> {
-
+  static navigationOptions = {
+      title: 'Articke Detail',
+    };
   renderSeparator = () => {
       return (
         <View
@@ -94,6 +96,9 @@ class ArticleDetailScreen extends Component<Props> {
         }
     });
   }
+  componentWillUnmount(){
+    this.props.clearArticleDetail();
+  }
 
 }
 
@@ -103,7 +108,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchArticle }, dispatch)
+  return bindActionCreators({ fetchArticle, clearArticleDetail }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArticleDetailScreen);

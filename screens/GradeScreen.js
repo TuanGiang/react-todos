@@ -7,6 +7,9 @@ import {connect} from 'react-redux';
 import { initOffline } from '../actions/action'
 
 class GradeScreen extends Component<Props> {
+  static navigationOptions = {
+      title: 'Pick Grade',
+    };
 
   _storeData = async (grade) => {
     try {

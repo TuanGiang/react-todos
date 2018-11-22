@@ -7,6 +7,9 @@ import {connect} from 'react-redux';
 import { fetchSubject } from '../actions/action'
 
 class SubjectScreen extends Component<Props> {
+  static navigationOptions = {
+      title: 'Pick Subject',
+    };
 constructor(props){
   super(props);
   this.state = {alwayUpdate: true};

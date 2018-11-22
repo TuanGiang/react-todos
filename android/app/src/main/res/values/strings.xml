@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">todos</string>
+    <string name="fcm_default_channel">FCM Channel</string>
 </resources>

@@ -3,10 +3,12 @@ import {Platform, StyleSheet, View, Text, AsyncStorage, FlatList, TouchableOpaci
 import ArticleItem from '../components/ArticleItem'
 import { bindActionCreators } from 'redux'
 import {connect} from 'react-redux';
-import { fetchArticleList } from '../actions/action'
+import { fetchArticleList, clearArticles } from '../actions/action'
 
 class ArticleListScreen extends Component<Props> {
-
+  static navigationOptions = {
+      title: 'Pick Article',
+    };
   renderSeparator = () => {
       return (
         <View
@@ -69,7 +71,9 @@ class ArticleListScreen extends Component<Props> {
         }
     });
   }
-
+  componentWillUnmount(){
+    this.props.clearArticles();
+  }
 }
 
 
@@ -78,7 +82,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchArticleList }, dispatch)
+  return bindActionCreators({ fetchArticleList, clearArticles }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArticleListScreen);

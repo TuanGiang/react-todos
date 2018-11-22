@@ -1,4 +1,4 @@
-import {FETCH_ARTICLE, FETCH_ARTICLE_DONE} from '../actions/type';
+import {FETCH_ARTICLE, FETCH_ARTICLE_DONE, CLEAR_ARTICLE_DETAIL} from '../actions/type';
 
 const initialState = [];
 
@@ -7,7 +7,8 @@ export default function (state = initialState, action) {
 
     case FETCH_ARTICLE_DONE:
       return action.payload;
-
+    case CLEAR_ARTICLE_DETAIL:
+        return initialState;
     default:
       return state;
   }
